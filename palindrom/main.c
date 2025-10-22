@@ -27,13 +27,16 @@ int search_palindrom(char* argv[])
     //counter für Anzahl palindrome
     static int counter = 0;
 
-    //Pointer die auf den Anfang und auf das Ende des Intervalls zeigen
-    char *start_str = strtok(argv[2], ":");
-    char *end_str = strtok(NULL, ":");
-
-    //Umwandlung in int
-    int start = atoi(start_str);
-    int end = atoi(end_str);
+    //Lese das Intervall und speicher die Werte in start und end
+    int start = 0;
+    int end = 0;
+    
+    //Fehlerbehandlung, falls keine Zahl eingegeben wird
+    if(sscanf(argv[2],"%d:%d",&start,&end) < 2)
+    {
+        perror("Gib normale Integer als Intervall an!\n");
+        exit(EXIT_FAILURE);
+    }
 
     //Fehlerbehandlung
     if(start > end) 
@@ -60,13 +63,8 @@ int search_palindrom(char* argv[])
         {
             if(check_palindrom(iter))
             {
-                printf("Palindrom!\n");
                 ++counter;
             }  
-            else
-            {
-                printf("Kein Palindrom!\n");
-            }
         }
             iter = strtok(NULL,",");
             ++current_word_index;
@@ -77,7 +75,7 @@ int search_palindrom(char* argv[])
 
 int main(int argc, char *argv[]) {
     //Wenn zu viele oder zu wenig Argumente ERROR
-    if(argc < 3 || argc > 3)
+    if(argc !=3)
     { 
         if(argc < 3) { perror("Zu wenig Argumente!\n"); }
         else { perror("Zu viele Argumente!\n"); }
