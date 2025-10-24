@@ -2,11 +2,19 @@
 
 unsigned int guess_the_number(void)
 {
+	unsigned int left = 10000;
+	unsigned int right = 99999;
+	while(left <= right)
+	{
+		int mid = (left + right)/2;
+		int check = evaluate(mid);
 
-	/*
-	 * Enter your code here!
-	 * You should call evaluate(int), to check whether your number is correct.
-	 * E.g., evaluate(12345)
-	 */
-	return 1; // Return the correct number
+		if(check == 0) { return mid; }
+
+		if(check == 1) { left = mid + 1; }
+
+		if(check == -1) { right = mid - 1; }
+	}
+
+	return 1; 
 }
