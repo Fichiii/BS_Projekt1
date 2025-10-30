@@ -8,6 +8,13 @@ struct student{
     char name[64];
 };
 
+enum colours {
+    red,
+    blue,
+    green,
+    purple
+};
+
 int main(void){
     //printf, putchar, puts
     int a = 42;
@@ -94,6 +101,7 @@ int main(void){
 
         iter = strtok(NULL, ",");
     }
+    printf("\n");
 
 
     //structs
@@ -105,8 +113,11 @@ int main(void){
     strncpy(s1.name, "Kevo", 64);
 
     puts(s1.name);
+    puts("\n");
 
     //Enums
-    
+    enum colours c1 = red;
+
+    if(c1 == 0) { puts("Kloppt\n"); }
 return 0;
 }
