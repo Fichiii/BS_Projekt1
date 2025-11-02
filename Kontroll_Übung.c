@@ -8,6 +8,13 @@ struct student{
     char name[64];
 };
 
+enum Farben{
+    rot,
+    blau,
+    grün,
+    lila
+};
+
 int main(void){
     //printf, putchar, puts
     int a = 42;
@@ -107,6 +114,9 @@ int main(void){
     puts(s1.name);
 
     //Enums
-    
+    enum Farben c1 = rot;
+    enum Farben c2 = blau;
+    if(c1 == rot) { puts("rot"); }    
+    if(c2 == blau) { puts("blau"); }
 return 0;
 }
